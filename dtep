@@ -1,0 +1,122 @@
+#!/usr/bin/python3
+# made by duom1 on github
+import argparse, os
+
+class Dtep:
+
+    def __init__(self):
+        pass
+
+    def run(self):
+        self.parser = argparse.ArgumentParser()
+        self.set_arguments()
+        self.args = self.parser.parse_args()
+        self.set_makefile()
+        self.write_changes()
+
+    def write_changes(self):
+        if self.args.command == "new":
+            os.mkdir(self.args.name)
+            os.chdir(self.args.name)
+        os.mkdir(self.args.source_dir)
+        with open("makefile", 'w') as fp:
+            fp.write(self.makefile)
+        os.chdir(self.args.source_dir)
+        if self.args.language == "c":
+            with open("main" + self.extension, 'w') as fp:
+                fp.write(default_c)
+        if self.args.language == "c++":
+            with open("main" + self.extension, 'w') as fp:
+                fp.write(default_cpp)
+        os.mkdir("headers")
+
+    def set_makefile(self):
+        flags_list = []
+        if self.args.language == "c++":
+            flags_list.append(default_cxxflags)
+            if self.args.std == "none":
+                flags_list.append("-std=c++20")
+            self.compiler = "CXX"
+            self.extension = ".cc"
+        elif self.args.language == "c":
+            flags_list.append(default_cflags)
+            if self.args.std == "none":
+                flags_list.append("-std=c99")
+            self.compiler = "CC"
+            self.extension = ".c"
+        if self.args.extension != "none":
+            self.extension = self.args.extension
+        if self.args.std != "none":
+            flags_list.append("-std=" + self.args.std)
+        self.flags = " ".join(flags_list)
+        self.makefile = default_makefile.format(self.flags, self.args.object_dir, self.args.source_dir, 
+                                                self.args.output_dir, self.extension, self.args.name, 
+                                                self.compiler)
+
+    def set_arguments(self):
+        self.parser.add_argument("command", choices=["new", "init"], help="init to initialize in current directory, new to create a new one")
+        self.parser.add_argument("name", type=str, default="project", help="name of the project")
+        self.parser.add_argument("language", choices=["c", "c++"], help="select the language to be used in the project")
+        self.parser.add_argument("-e", "--extension", type=str, default="none", help="set the file extension")
+        self.parser.add_argument("--std", type=str, default="none", help="the standar for example c99 or c++20")
+        self.parser.add_argument("-s", "--source-dir", type=str, default="src", help="set the name of the source directory")
+        self.parser.add_argument("--object-dir", type=str, default="obj", help="")
+        self.parser.add_argument("--output-dir", type=str, default="out", help="")
+
+
+default_makefile = """FLAGS = {0}
+LDFLAGS =
+
+OBJ_DIR = {1}
+SRC_DIR = {2}
+OUT_DIR = {3}
+
+EXTENSION = {4}
+SRCS = $(wildcard $(SRC_DIR)/*$(EXTENSION))
+OBJS = $(patsubst $(SRC_DIR)/%$(EXTENSION), $(OBJ_DIR)/%.o, $(SRCS))
+NAME = $(OUT_DIR)/{5}
+
+.PHONY: debug release
+
+debug: FLAGS += -g
+debug: $(OUT_DIR) $(OBJ_DIR) $(NAME)
+
+release: FLAGS += -O2 -DNDEBUG
+release: $(OUT_DIR) $(OBJ_DIR) $(NAME)
+
+$(NAME): $(OBJS)
+\t$({6}) -o $(NAME) $(OBJS) $(LDFLAGS)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%$(EXTENSION)
+\t$({6}) -c $< -o $@ $(FLAGS)
+
+clean:
+\trm -f $(OBJ_DIR)/* $(OUT_DIR)/*
+
+$(OUT_DIR):
+\tmkdir $(OUT_DIR)
+
+$(OBJ_DIR):
+\tmkdir $(OBJ_DIR)"""
+
+default_c = """#include <stdio.h>
+
+int main(void) {
+\tprintf("hello world\\n");
+\treturn 0;
+}
+"""
+
+default_cpp = """#include <iostream>
+
+int main(void) {
+\tstd::cout << "hello world\\n";
+\treturn 0;
+}
+"""
+default_cxxflags = "-Wall -Wextra -Werror -Weffc++ -Wconversion -Wsign-conversion -pedantic-errors"
+default_cflags = "-Wall -Wextra -Werror -Wconversion -Wsign-conversion -pedantic-errors"
+
+if __name__ == "__main__":
+    dtep = Dtep()
+    dtep.run()
