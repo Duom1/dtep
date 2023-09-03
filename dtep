@@ -35,7 +35,7 @@ class Dtep:
 
     def set_makefile(self):
         flags_list = []
-        if self.args.language == "c++":
+        if self.args.language == "c++" or self.args.language == "cpp":
             flags_list.append(default_cxxflags)
             if self.args.std == "none":
                 flags_list.append("-std=c++20")
@@ -59,7 +59,7 @@ class Dtep:
     def set_arguments(self):
         self.parser.add_argument("command", choices=["new", "init"], help="init to initialize in current directory, new to create a new one")
         self.parser.add_argument("name", type=str, default="project", help="name of the project")
-        self.parser.add_argument("language", choices=["c", "c++"], help="select the language to be used in the project")
+        self.parser.add_argument("language", choices=["c", "c++", "cpp"], help="select the language to be used in the project")
         self.parser.add_argument("-e", "--extension", type=str, default="none", help="set the file extension")
         self.parser.add_argument("--std", type=str, default="none", help="the standar for example c99 or c++20")
         self.parser.add_argument("-g", "--gitignore", action="store_true", default=False, help="adds a .gitignore file to the project")
