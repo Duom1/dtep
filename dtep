@@ -28,7 +28,7 @@ class Dtep:
         if self.args.language == "c":
             with open("main" + self.extension, 'w') as fp:
                 fp.write(default_c)
-        if self.args.language == "c++":
+        if self.args.language == "c++" or self.args.language == "cpp":
             with open("main" + self.extension, 'w') as fp:
                 fp.write(default_cpp)
         os.mkdir("headers")
