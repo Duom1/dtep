@@ -95,7 +95,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%$(EXTENSION)
 \t$({6}) -c $< -o $@ $(FLAGS)
 
 clean:
-\trm -f $(OBJ_DIR)/.o $(NAME)
+\trm -f $(OBJS) $(NAME)
 
 $(OUT_DIR):
 \tmkdir $(OUT_DIR)
