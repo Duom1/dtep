@@ -85,7 +85,7 @@ NAME = $(OUT_DIR)/{5}
 debug: FLAGS += -g
 debug: $(OUT_DIR) $(OBJ_DIR) $(NAME)
 
-release: FLAGS += -O2 -DNDEBUG
+release: FLAGS += -march=native -O3 -DNDEBUG
 release: $(OUT_DIR) $(OBJ_DIR) $(NAME)
 
 $(NAME): $(OBJS)
@@ -118,7 +118,7 @@ int main(void) {
 \treturn 0;
 }
 """
-default_cxxflags = "-Wall -Wextra -Werror -Wshadow -Weffc++ -Wconversion -Wsign-conversion -pedantic-errors"
+default_cxxflags = "-Wall -Wextra -Werror -Wshadow -Wconversion -Wsign-conversion -pedantic-errors"
 default_cflags = "-Wall -Wextra -Werror -Wshadow -Wconversion -Wsign-conversion -pedantic-errors"
 
 if __name__ == "__main__":
