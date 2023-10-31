@@ -2,10 +2,12 @@
 # made by duom1 on github
 import argparse, os
 
+DTEP_VERSION = 0.8
+
 class Dtep:
 
-    def __init__(self):
-        pass
+    def __init__(self, version: float):
+        self.version = version
 
     def run(self):
         self.parser = argparse.ArgumentParser()
@@ -54,7 +56,7 @@ class Dtep:
         self.flags = " ".join(flags_list)
         self.makefile = default_makefile.format(self.flags, self.args.object_dir, self.args.source_dir, 
                                                 self.args.output_dir, self.extension, self.args.name, 
-                                                self.compiler)
+                                                self.compiler, self.version)
 
     def set_arguments(self):
         self.parser.add_argument("command", choices=["new", "init"], help="init to initialize in current directory, new to create a new one")
@@ -68,8 +70,9 @@ class Dtep:
         self.parser.add_argument("--output-dir", type=str, default="out", help="")
 
 
-default_makefile = """FLAGS = {0}
-LDFLAGS =
+default_makefile = """# made with dtep version {7}
+FLAGS += {0}
+LDFLAGS +=
 
 OBJ_DIR = {1}
 SRC_DIR = {2}
@@ -118,9 +121,9 @@ int main(void) {
 \treturn 0;
 }
 """
-default_cxxflags = "-Wall -Wextra -Werror -Wshadow -Wconversion -Wsign-conversion -pedantic-errors"
 default_cflags = "-Wall -Wextra -Werror -Wshadow -Wconversion -Wsign-conversion -pedantic-errors"
+default_cxxflags = default_cflags
 
 if __name__ == "__main__":
-    dtep = Dtep()
+    dtep = Dtep(DTEP_VERSION)
     dtep.run()
