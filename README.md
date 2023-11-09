@@ -72,7 +72,8 @@ $(OUT_DIR):
 $(OBJ_DIR):
     mkdir $(OBJ_DIR)
 ```
-```c
+``` c
+/* file: project-name/src/main.c */
 #include <stdio.h>
 
 int main(void) {
@@ -85,13 +86,13 @@ As you run make for the first time it will create folders named
 
 ## How does the makefile work
 The make file has two targets: "debug" and "release".
-Debug is meant for debuggin the program so it has the "-g" options.
+Debug is meant for debuggin the program so it has the "-g" option.
 Release is meant to be the program to actually use it has optimisations
 turned to level 3 and the cpu optimisations set to native. Also the NDEBUG
 preprocessor macro is defined.
 
 ## Command line options
-The bare minimum is dtep mode(new, init) name(name for the project) language(cpp, c++, c)
+The bare minimum is "dtep mode(new, init) name(name for the project) language(cpp, c++, c)"
 
 Some other options are:
 * -h shows a help page
