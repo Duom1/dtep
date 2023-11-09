@@ -10,7 +10,7 @@ Then use "dtep -h" to see available options
 
 ## Testing
 Testing is done using the robot framework library for python
-and are found in the folder named "test.
+and are found in the folder named "test".
 To run tests cd into the test directory and use the following
 command to run the tests:
 ``` sh
