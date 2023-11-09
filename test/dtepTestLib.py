@@ -1,25 +1,11 @@
-'''
-This is a test library for a tool named dtep
-
-things that need testing (test cases):
-    * dtep with no extra arguments
-    * -e <.extension> changed the file extension for source files
-      found in src/main.extension
-      Makefile line: EXTENSION = .extension
-    * --std <standard> to change the standard (c99 c++20)
-      found in Makefile
-    * -g to create a .gitignore file
-      the .gitignore file has the obj and out directory
-    * all the directory commands (-s --object-dir --output-dir)
-'''
-
 import subprocess
 from os.path import exists
+from os import chdir, mkdir
 from shutil import rmtree
 
 class dtepTestLib(object):
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.python: str = "./venv/bin/python"
         self.dtep: str = "../dtep"
         self.mode: str
@@ -28,33 +14,81 @@ class dtepTestLib(object):
         self.arguments = []
         self.command = []
 
-    def add_extension_argument(self, extension: str):
-        self.arguments += ["-e"] + [extension]
+    def set_python_and_dtep(self, dtep: str, python: str) -> None:
+        self.python = python
+        self.dtep = dtep
 
-    def run_dtep(self):
+    def go_back_one_directory(self) -> None:
+        chdir("..")
+
+    def create_and_change_directory(self, name: str) -> None:
+        mkdir(name)
+        chdir(name)
+
+    def add_argument(self, argument: str) -> None:
+        self.arguments += [argument]
+
+    def add_argument_with_option(self, argument: str, option: str) -> None:
+        self.arguments += [argument] + [option]
+
+    def add_standard_argument(self, std: str) -> None:
+        self.add_argument_with_option("--std", std)
+
+    def add_extension_argument(self, extension: str) -> None:
+        self.add_argument_with_option("-e", extension)
+
+    def run_dtep(self) -> None:
         self.command = [self.python] + [self.dtep] + self.arguments
         subprocess.run(self.command)
 
-    def set_mode(self, mode: str):
+    def set_mode(self, mode: str) -> None:
         self.mode = mode
 
-    def set_project_name(self, name:str):
+    def set_project_name(self, name:str) -> None:
         self.project_name = name
 
-    def set_language(self, lang: str):
+    def set_language(self, lang: str) -> None:
         self.language = lang
 
-    def set_required(self, mode: str, name: str, lang: str):
+    def set_required(self, mode: str, name: str, lang: str) -> None:
         self.set_mode(mode)
         self.set_project_name(name)
         self.set_language(lang)
         self.arguments = [self.mode, self.project_name, self.language]
 
-    def check_file(self, path: str):
+    def check_std(self, path: str, std: str) -> None:
+        assert  self._check_file_contains_substring(
+            path, "-std="+std), "std does not match given: "+std
+
+    def check_directory_variables_from_makefile(self, makefile: str,
+                                                dir_variable: str, name: str) -> None:
+        self._check_file_contains_substring(makefile, dir_variable+" = "+name)
+
+    def check_file_exists(self, path: str) -> None:
         assert exists(path), "file "+path+" does not exist"
 
-    def check_file_with_extension(self, path: str, extension: str):
+    def check_file_exists_with_extension(self, path: str, extension: str) -> None:
         assert exists(path+extension), "file "+path+extension+" does not exist"
 
-    def clean_directory(self, name: str):
+    def check_gitignore_contents(self, path: str, obj: str, out: str) -> None:
+        assert self._check_file_contains_substring(path, obj), obj+" not found in gitignore"
+        assert self._check_file_contains_substring(path, out), out+" not found in gitignore"
+
+    def go_back_and_clean(self, dir_name: str) -> None:
+        self.go_back_one_directory()
+        self.clean_directory(dir_name)
+
+    def clean_directory(self, name: str) -> None:
         rmtree(name)
+
+    def _check_file_contains_substring(self, file_path: str, substring: str) -> bool:
+        if exists(file_path):
+            with open(file_path, 'r') as file:
+                file_content = file.read()
+                if substring in file_content:
+                    return True
+                else:
+                    return False
+        else:
+            raise KeyError(
+                "file given to substring check does not exist: "+file_path)
