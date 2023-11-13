@@ -31,48 +31,40 @@ class dtepTestLib(object):
     def add_argument_with_option(self, argument: str, option: str) -> None:
         self.arguments += [argument] + [option]
 
-    def add_standard_argument(self, std: str) -> None:
-        self.add_argument_with_option("--std", std)
-
-    def add_extension_argument(self, extension: str) -> None:
-        self.add_argument_with_option("-e", extension)
-
     def run_dtep(self) -> None:
         self.command = [self.python] + [self.dtep] + self.arguments
         subprocess.run(self.command)
 
-    def set_mode(self, mode: str) -> None:
+    def _set_mode(self, mode: str) -> None:
         self.mode = mode
 
-    def set_project_name(self, name:str) -> None:
+    def _set_project_name(self, name:str) -> None:
         self.project_name = name
 
-    def set_language(self, lang: str) -> None:
+    def _set_language(self, lang: str) -> None:
         self.language = lang
 
     def set_required(self, mode: str, name: str, lang: str) -> None:
-        self.set_mode(mode)
-        self.set_project_name(name)
-        self.set_language(lang)
+        self._set_mode(mode)
+        self._set_project_name(name)
+        self._set_language(lang)
         self.arguments = [self.mode, self.project_name, self.language]
 
     def check_std(self, path: str, std: str) -> None:
-        assert  self._check_file_contains_substring(
-            path, "-std="+std), "std does not match given: "+std
+        assert  self._check_file_contains_substring(path, "-std="+std), str(
+            "std in makefile does not match given: "+std)
 
-    def check_variable_from_makefile(self, makefile: str,
-                                     dir_variable: str, name: str) -> None:
+    def check_variable_from_makefile(self,
+                                     makefile: str,
+                                     dir_variable: str,
+                                     name: str
+                                     ) -> None:
         assert self._check_file_contains_substring(
             makefile, dir_variable+" = "+name), str(
             dir_variable+" = "+name+" not found in makefile")
 
     def check_file_exists(self, path: str) -> None:
         assert exists(path), "file "+path+" does not exist"
-
-    def check_file_exists_with_extension(
-            self, path: str, extension: str) -> None:
-        assert exists(path+extension), str(
-            "file "+path+extension+" does not exist")
 
     def check_gitignore_contents(
             self, path: str, obj: str, out: str) -> None:
