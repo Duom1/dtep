@@ -60,19 +60,26 @@ class dtepTestLib(object):
         assert  self._check_file_contains_substring(
             path, "-std="+std), "std does not match given: "+std
 
-    def check_directory_variables_from_makefile(self, makefile: str,
-                                                dir_variable: str, name: str) -> None:
-        self._check_file_contains_substring(makefile, dir_variable+" = "+name)
+    def check_variable_from_makefile(self, makefile: str,
+                                     dir_variable: str, name: str) -> None:
+        assert self._check_file_contains_substring(
+            makefile, dir_variable+" = "+name), str(
+            dir_variable+" = "+name+" not found in makefile")
 
     def check_file_exists(self, path: str) -> None:
         assert exists(path), "file "+path+" does not exist"
 
-    def check_file_exists_with_extension(self, path: str, extension: str) -> None:
-        assert exists(path+extension), "file "+path+extension+" does not exist"
+    def check_file_exists_with_extension(
+            self, path: str, extension: str) -> None:
+        assert exists(path+extension), str(
+            "file "+path+extension+" does not exist")
 
-    def check_gitignore_contents(self, path: str, obj: str, out: str) -> None:
-        assert self._check_file_contains_substring(path, obj), obj+" not found in gitignore"
-        assert self._check_file_contains_substring(path, out), out+" not found in gitignore"
+    def check_gitignore_contents(
+            self, path: str, obj: str, out: str) -> None:
+        assert self._check_file_contains_substring(
+            path, obj), obj+" not found in gitignore"
+        assert self._check_file_contains_substring(
+            path, out), out+" not found in gitignore"
 
     def go_back_and_clean(self, dir_name: str) -> None:
         self.go_back_one_directory()
@@ -81,7 +88,8 @@ class dtepTestLib(object):
     def clean_directory(self, name: str) -> None:
         rmtree(name)
 
-    def _check_file_contains_substring(self, file_path: str, substring: str) -> bool:
+    def _check_file_contains_substring(
+            self, file_path: str, substring: str) -> bool:
         if exists(file_path):
             with open(file_path, 'r') as file:
                 file_content = file.read()

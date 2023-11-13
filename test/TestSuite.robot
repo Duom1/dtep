@@ -3,8 +3,8 @@ Documentation   dtep tests
 ...             
 ...             This test suite tests all dtep options
 ...             (not including "-h"). Some possible
-...             cases taht might be missed are ones
-...             where a option influences somethin
+...             cases that might be missed are ones
+...             where a option influences something
 ...             that is not being tested in the same
 ...             test case (that will hopefully not 
 ...             happen). I still think these test
@@ -52,7 +52,9 @@ Create a c project with git ignore and custom obj and out directory
   Add argument with option  --output-dir  output
   Run dtep
   Check file exists  test_project/.gitignore
-  Check directory variables from makefile    test_project/makefile   objects  output
+  Check gitignore contents  test_project/.gitignore  objects  output
+  Check variable from makefile  test_project/makefile  OBJ_DIR  objects
+  Check variable from makefile  test_project/makefile  OUT_DIR  output
   [Teardown]   Clean directory   test_project
 
 Create a c++ project with custom source directory
@@ -60,6 +62,7 @@ Create a c++ project with custom source directory
   Add argument with option  -s  source
   Run dtep
   Check file exists with extension  test_project/source/main  .cc 
+  Check variable from makefile  test_project/makefile  SRC_DIR  source
   [Teardown]   Clean directory   test_project
 
 Use init to create a c project instead of new

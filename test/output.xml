@@ -1,226 +1,244 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.11.6 on linux)" generated="20231109 18:45:14.294" rpa="false" schemaversion="4">
+<robot generator="Robot 6.1.1 (Python 3.11.2 on linux)" generated="20231113 13:16:20.788" rpa="false" schemaversion="4">
 <suite id="s1" name="TestSuite" source="/home/user/code/dtep/test/TestSuite.robot">
 <test id="s1-t1" name="Create default c++" line="16">
 <kw name="Set Required" library="dtepTestLib">
 <arg>new</arg>
 <arg>test_project</arg>
 <arg>c++</arg>
-<status status="PASS" starttime="20231109 18:45:14.305" endtime="20231109 18:45:14.305"/>
+<status status="PASS" starttime="20231113 13:16:20.800" endtime="20231113 13:16:20.800"/>
 </kw>
 <kw name="Run Dtep" library="dtepTestLib">
-<status status="PASS" starttime="20231109 18:45:14.305" endtime="20231109 18:45:14.320"/>
+<status status="PASS" starttime="20231113 13:16:20.800" endtime="20231113 13:16:20.817"/>
 </kw>
 <kw name="Check File Exists With Extension" library="dtepTestLib">
 <arg>test_project/src/main</arg>
 <arg>.cc</arg>
-<status status="PASS" starttime="20231109 18:45:14.320" endtime="20231109 18:45:14.320"/>
+<status status="PASS" starttime="20231113 13:16:20.817" endtime="20231113 13:16:20.817"/>
 </kw>
 <kw name="Clean Directory" library="dtepTestLib" type="TEARDOWN">
 <arg>test_project</arg>
-<status status="PASS" starttime="20231109 18:45:14.320" endtime="20231109 18:45:14.321"/>
+<status status="PASS" starttime="20231113 13:16:20.817" endtime="20231113 13:16:20.818"/>
 </kw>
-<status status="PASS" starttime="20231109 18:45:14.305" endtime="20231109 18:45:14.321"/>
+<status status="PASS" starttime="20231113 13:16:20.799" endtime="20231113 13:16:20.818"/>
 </test>
 <test id="s1-t2" name="Create default c" line="22">
 <kw name="Set Required" library="dtepTestLib">
 <arg>new</arg>
 <arg>test_project</arg>
 <arg>c</arg>
-<status status="PASS" starttime="20231109 18:45:14.321" endtime="20231109 18:45:14.321"/>
+<status status="PASS" starttime="20231113 13:16:20.818" endtime="20231113 13:16:20.818"/>
 </kw>
 <kw name="Run Dtep" library="dtepTestLib">
-<status status="PASS" starttime="20231109 18:45:14.321" endtime="20231109 18:45:14.335"/>
+<status status="PASS" starttime="20231113 13:16:20.818" endtime="20231113 13:16:20.836"/>
 </kw>
 <kw name="Check File Exists With Extension" library="dtepTestLib">
 <arg>test_project/src/main</arg>
 <arg>.c</arg>
-<status status="PASS" starttime="20231109 18:45:14.336" endtime="20231109 18:45:14.336"/>
+<status status="PASS" starttime="20231113 13:16:20.837" endtime="20231113 13:16:20.837"/>
 </kw>
 <kw name="Clean Directory" library="dtepTestLib" type="TEARDOWN">
 <arg>test_project</arg>
-<status status="PASS" starttime="20231109 18:45:14.336" endtime="20231109 18:45:14.336"/>
+<status status="PASS" starttime="20231113 13:16:20.837" endtime="20231113 13:16:20.837"/>
 </kw>
-<status status="PASS" starttime="20231109 18:45:14.321" endtime="20231109 18:45:14.336"/>
+<status status="PASS" starttime="20231113 13:16:20.818" endtime="20231113 13:16:20.837"/>
 </test>
 <test id="s1-t3" name="Create a project with cpp instead of c++" line="28">
 <kw name="Set Required" library="dtepTestLib">
 <arg>new</arg>
 <arg>test_project</arg>
 <arg>cpp</arg>
-<status status="PASS" starttime="20231109 18:45:14.336" endtime="20231109 18:45:14.336"/>
+<status status="PASS" starttime="20231113 13:16:20.838" endtime="20231113 13:16:20.838"/>
 </kw>
 <kw name="Run Dtep" library="dtepTestLib">
-<status status="PASS" starttime="20231109 18:45:14.336" endtime="20231109 18:45:14.351"/>
+<status status="PASS" starttime="20231113 13:16:20.838" endtime="20231113 13:16:20.856"/>
 </kw>
 <kw name="Check File Exists With Extension" library="dtepTestLib">
 <arg>test_project/src/main</arg>
 <arg>.cc</arg>
-<status status="PASS" starttime="20231109 18:45:14.351" endtime="20231109 18:45:14.351"/>
+<status status="PASS" starttime="20231113 13:16:20.856" endtime="20231113 13:16:20.856"/>
 </kw>
 <kw name="Clean Directory" library="dtepTestLib" type="TEARDOWN">
 <arg>test_project</arg>
-<status status="PASS" starttime="20231109 18:45:14.351" endtime="20231109 18:45:14.351"/>
+<status status="PASS" starttime="20231113 13:16:20.857" endtime="20231113 13:16:20.857"/>
 </kw>
-<status status="PASS" starttime="20231109 18:45:14.336" endtime="20231109 18:45:14.351"/>
+<status status="PASS" starttime="20231113 13:16:20.838" endtime="20231113 13:16:20.857"/>
 </test>
 <test id="s1-t4" name="Create c++ with .cpp extension" line="34">
 <kw name="Set Required" library="dtepTestLib">
 <arg>new</arg>
 <arg>test_project</arg>
 <arg>c++</arg>
-<status status="PASS" starttime="20231109 18:45:14.352" endtime="20231109 18:45:14.352"/>
+<status status="PASS" starttime="20231113 13:16:20.857" endtime="20231113 13:16:20.858"/>
 </kw>
 <kw name="Add Extension Argument" library="dtepTestLib">
 <arg>.cpp</arg>
-<status status="PASS" starttime="20231109 18:45:14.352" endtime="20231109 18:45:14.352"/>
+<status status="PASS" starttime="20231113 13:16:20.858" endtime="20231113 13:16:20.858"/>
 </kw>
 <kw name="Run Dtep" library="dtepTestLib">
-<status status="PASS" starttime="20231109 18:45:14.352" endtime="20231109 18:45:14.366"/>
+<status status="PASS" starttime="20231113 13:16:20.858" endtime="20231113 13:16:20.876"/>
 </kw>
 <kw name="Check File Exists With Extension" library="dtepTestLib">
 <arg>test_project/src/main</arg>
 <arg>.cpp</arg>
-<status status="PASS" starttime="20231109 18:45:14.366" endtime="20231109 18:45:14.366"/>
+<status status="PASS" starttime="20231113 13:16:20.876" endtime="20231113 13:16:20.876"/>
 </kw>
 <kw name="Clean Directory" library="dtepTestLib" type="TEARDOWN">
 <arg>test_project</arg>
-<status status="PASS" starttime="20231109 18:45:14.366" endtime="20231109 18:45:14.367"/>
+<status status="PASS" starttime="20231113 13:16:20.876" endtime="20231113 13:16:20.876"/>
 </kw>
-<status status="PASS" starttime="20231109 18:45:14.351" endtime="20231109 18:45:14.367"/>
+<status status="PASS" starttime="20231113 13:16:20.857" endtime="20231113 13:16:20.876"/>
 </test>
 <test id="s1-t5" name="Create c with std c89" line="41">
 <kw name="Set Required" library="dtepTestLib">
 <arg>new</arg>
 <arg>test_project</arg>
 <arg>c</arg>
-<status status="PASS" starttime="20231109 18:45:14.367" endtime="20231109 18:45:14.367"/>
+<status status="PASS" starttime="20231113 13:16:20.877" endtime="20231113 13:16:20.877"/>
 </kw>
 <kw name="Add Standard Argument" library="dtepTestLib">
 <arg>c89</arg>
-<status status="PASS" starttime="20231109 18:45:14.367" endtime="20231109 18:45:14.367"/>
+<status status="PASS" starttime="20231113 13:16:20.877" endtime="20231113 13:16:20.877"/>
 </kw>
 <kw name="Run Dtep" library="dtepTestLib">
-<status status="PASS" starttime="20231109 18:45:14.367" endtime="20231109 18:45:14.382"/>
+<status status="PASS" starttime="20231113 13:16:20.877" endtime="20231113 13:16:20.895"/>
 </kw>
 <kw name="Check Std" library="dtepTestLib">
 <arg>test_project/makefile</arg>
 <arg>c89</arg>
-<status status="PASS" starttime="20231109 18:45:14.382" endtime="20231109 18:45:14.382"/>
+<status status="PASS" starttime="20231113 13:16:20.896" endtime="20231113 13:16:20.896"/>
 </kw>
 <kw name="Clean Directory" library="dtepTestLib" type="TEARDOWN">
 <arg>test_project</arg>
-<status status="PASS" starttime="20231109 18:45:14.382" endtime="20231109 18:45:14.382"/>
+<status status="PASS" starttime="20231113 13:16:20.896" endtime="20231113 13:16:20.896"/>
 </kw>
-<status status="PASS" starttime="20231109 18:45:14.367" endtime="20231109 18:45:14.382"/>
+<status status="PASS" starttime="20231113 13:16:20.876" endtime="20231113 13:16:20.896"/>
 </test>
 <test id="s1-t6" name="Create a c project with git ignore and custom obj and out directory" line="48">
 <kw name="Set Required" library="dtepTestLib">
 <arg>new</arg>
 <arg>test_project</arg>
 <arg>c</arg>
-<status status="PASS" starttime="20231109 18:45:14.382" endtime="20231109 18:45:14.382"/>
+<status status="PASS" starttime="20231113 13:16:20.897" endtime="20231113 13:16:20.897"/>
 </kw>
 <kw name="Add Argument" library="dtepTestLib">
 <arg>-g</arg>
-<status status="PASS" starttime="20231109 18:45:14.382" endtime="20231109 18:45:14.383"/>
+<status status="PASS" starttime="20231113 13:16:20.897" endtime="20231113 13:16:20.897"/>
 </kw>
 <kw name="Add Argument With Option" library="dtepTestLib">
 <arg>--object-dir</arg>
 <arg>objects</arg>
-<status status="PASS" starttime="20231109 18:45:14.383" endtime="20231109 18:45:14.383"/>
+<status status="PASS" starttime="20231113 13:16:20.897" endtime="20231113 13:16:20.897"/>
 </kw>
 <kw name="Add Argument With Option" library="dtepTestLib">
 <arg>--output-dir</arg>
 <arg>output</arg>
-<status status="PASS" starttime="20231109 18:45:14.383" endtime="20231109 18:45:14.383"/>
+<status status="PASS" starttime="20231113 13:16:20.897" endtime="20231113 13:16:20.897"/>
 </kw>
 <kw name="Run Dtep" library="dtepTestLib">
-<status status="PASS" starttime="20231109 18:45:14.383" endtime="20231109 18:45:14.397"/>
+<status status="PASS" starttime="20231113 13:16:20.897" endtime="20231113 13:16:20.916"/>
 </kw>
 <kw name="Check File Exists" library="dtepTestLib">
 <arg>test_project/.gitignore</arg>
-<status status="PASS" starttime="20231109 18:45:14.397" endtime="20231109 18:45:14.397"/>
+<status status="PASS" starttime="20231113 13:16:20.916" endtime="20231113 13:16:20.916"/>
 </kw>
-<kw name="Check Directory Variables From Makefile" library="dtepTestLib">
-<arg>test_project/makefile</arg>
+<kw name="Check Gitignore Contents" library="dtepTestLib">
+<arg>test_project/.gitignore</arg>
 <arg>objects</arg>
 <arg>output</arg>
-<status status="PASS" starttime="20231109 18:45:14.397" endtime="20231109 18:45:14.398"/>
+<status status="PASS" starttime="20231113 13:16:20.916" endtime="20231113 13:16:20.916"/>
+</kw>
+<kw name="Check Variable From Makefile" library="dtepTestLib">
+<arg>test_project/makefile</arg>
+<arg>OBJ_DIR</arg>
+<arg>objects</arg>
+<status status="PASS" starttime="20231113 13:16:20.916" endtime="20231113 13:16:20.917"/>
+</kw>
+<kw name="Check Variable From Makefile" library="dtepTestLib">
+<arg>test_project/makefile</arg>
+<arg>OUT_DIR</arg>
+<arg>output</arg>
+<status status="PASS" starttime="20231113 13:16:20.917" endtime="20231113 13:16:20.917"/>
 </kw>
 <kw name="Clean Directory" library="dtepTestLib" type="TEARDOWN">
 <arg>test_project</arg>
-<status status="PASS" starttime="20231109 18:45:14.398" endtime="20231109 18:45:14.398"/>
+<status status="PASS" starttime="20231113 13:16:20.917" endtime="20231113 13:16:20.917"/>
 </kw>
-<status status="PASS" starttime="20231109 18:45:14.382" endtime="20231109 18:45:14.398"/>
+<status status="PASS" starttime="20231113 13:16:20.896" endtime="20231113 13:16:20.917"/>
 </test>
-<test id="s1-t7" name="Create a c++ project with custom source directory" line="58">
+<test id="s1-t7" name="Create a c++ project with custom source directory" line="60">
 <kw name="Set Required" library="dtepTestLib">
 <arg>new</arg>
 <arg>test_project</arg>
 <arg>c++</arg>
-<status status="PASS" starttime="20231109 18:45:14.398" endtime="20231109 18:45:14.398"/>
+<status status="PASS" starttime="20231113 13:16:20.918" endtime="20231113 13:16:20.918"/>
 </kw>
 <kw name="Add Argument With Option" library="dtepTestLib">
 <arg>-s</arg>
 <arg>source</arg>
-<status status="PASS" starttime="20231109 18:45:14.398" endtime="20231109 18:45:14.398"/>
+<status status="PASS" starttime="20231113 13:16:20.918" endtime="20231113 13:16:20.918"/>
 </kw>
 <kw name="Run Dtep" library="dtepTestLib">
-<status status="PASS" starttime="20231109 18:45:14.398" endtime="20231109 18:45:14.413"/>
+<status status="PASS" starttime="20231113 13:16:20.918" endtime="20231113 13:16:20.936"/>
 </kw>
 <kw name="Check File Exists With Extension" library="dtepTestLib">
 <arg>test_project/source/main</arg>
 <arg>.cc</arg>
-<status status="PASS" starttime="20231109 18:45:14.413" endtime="20231109 18:45:14.413"/>
+<status status="PASS" starttime="20231113 13:16:20.936" endtime="20231113 13:16:20.936"/>
+</kw>
+<kw name="Check Variable From Makefile" library="dtepTestLib">
+<arg>test_project/makefile</arg>
+<arg>SRC_DIR</arg>
+<arg>source</arg>
+<status status="PASS" starttime="20231113 13:16:20.936" endtime="20231113 13:16:20.936"/>
 </kw>
 <kw name="Clean Directory" library="dtepTestLib" type="TEARDOWN">
 <arg>test_project</arg>
-<status status="PASS" starttime="20231109 18:45:14.413" endtime="20231109 18:45:14.413"/>
+<status status="PASS" starttime="20231113 13:16:20.937" endtime="20231113 13:16:20.937"/>
 </kw>
-<status status="PASS" starttime="20231109 18:45:14.398" endtime="20231109 18:45:14.413"/>
+<status status="PASS" starttime="20231113 13:16:20.917" endtime="20231113 13:16:20.937"/>
 </test>
-<test id="s1-t8" name="Use init to create a c project instead of new" line="65">
+<test id="s1-t8" name="Use init to create a c project instead of new" line="68">
 <kw name="Create And Change Directory" library="dtepTestLib">
 <arg>test_project</arg>
-<status status="PASS" starttime="20231109 18:45:14.414" endtime="20231109 18:45:14.414"/>
+<status status="PASS" starttime="20231113 13:16:20.937" endtime="20231113 13:16:20.938"/>
 </kw>
 <kw name="Set Python And Dtep" library="dtepTestLib">
 <arg>../../dtep</arg>
 <arg>../venv/bin/python</arg>
-<status status="PASS" starttime="20231109 18:45:14.414" endtime="20231109 18:45:14.414"/>
+<status status="PASS" starttime="20231113 13:16:20.938" endtime="20231113 13:16:20.938"/>
 </kw>
 <kw name="Set Required" library="dtepTestLib">
 <arg>init</arg>
 <arg>test_project</arg>
 <arg>c</arg>
-<status status="PASS" starttime="20231109 18:45:14.414" endtime="20231109 18:45:14.414"/>
+<status status="PASS" starttime="20231113 13:16:20.938" endtime="20231113 13:16:20.938"/>
 </kw>
 <kw name="Run Dtep" library="dtepTestLib">
-<status status="PASS" starttime="20231109 18:45:14.414" endtime="20231109 18:45:14.428"/>
+<status status="PASS" starttime="20231113 13:16:20.938" endtime="20231113 13:16:20.956"/>
 </kw>
 <kw name="Check File Exists With Extension" library="dtepTestLib">
 <arg>src/main</arg>
 <arg>.c</arg>
-<status status="PASS" starttime="20231109 18:45:14.429" endtime="20231109 18:45:14.429"/>
+<status status="PASS" starttime="20231113 13:16:20.956" endtime="20231113 13:16:20.956"/>
 </kw>
 <kw name="Go Back And Clean" library="dtepTestLib" type="TEARDOWN">
 <arg>test_project</arg>
-<status status="PASS" starttime="20231109 18:45:14.429" endtime="20231109 18:45:14.429"/>
+<status status="PASS" starttime="20231113 13:16:20.957" endtime="20231113 13:16:20.957"/>
 </kw>
-<status status="PASS" starttime="20231109 18:45:14.413" endtime="20231109 18:45:14.429"/>
+<status status="PASS" starttime="20231113 13:16:20.937" endtime="20231113 13:16:20.957"/>
 </test>
 <doc>dtep tests
 
 This test suite tests all dtep options
 (not including "-h"). Some possible
-cases taht might be missed are ones
-where a option influences somethin
+cases that might be missed are ones
+where a option influences something
 that is not being tested in the same
 test case (that will hopefully not
 happen). I still think these test
 are valuable.</doc>
-<status status="PASS" starttime="20231109 18:45:14.295" endtime="20231109 18:45:14.429"/>
+<status status="PASS" starttime="20231113 13:16:20.788" endtime="20231113 13:16:20.957"/>
 </suite>
 <statistics>
 <total>
