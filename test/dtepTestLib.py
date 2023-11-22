@@ -3,6 +3,7 @@ from os.path import exists
 from os import chdir, mkdir
 from shutil import rmtree
 
+
 class dtepTestLib(object):
 
     def __init__(self) -> None:
@@ -38,7 +39,7 @@ class dtepTestLib(object):
     def _set_mode(self, mode: str) -> None:
         self.mode = mode
 
-    def _set_project_name(self, name:str) -> None:
+    def _set_project_name(self, name: str) -> None:
         self.project_name = name
 
     def _set_language(self, lang: str) -> None:
@@ -51,7 +52,7 @@ class dtepTestLib(object):
         self.arguments = [self.mode, self.project_name, self.language]
 
     def check_std(self, path: str, std: str) -> None:
-        assert  self._check_file_contains_substring(path, "-std="+std), str(
+        assert self._check_file_contains_substring(path, "-std="+std), str(
             "std in makefile does not match given: "+std)
 
     def check_variable_from_makefile(self,

@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 # made by duom1 on github
-import argparse, os
+import argparse
+import os
 
 DTEP_VERSION = 0.9
+
 
 class Dtep:
 
@@ -23,7 +25,9 @@ class Dtep:
         os.mkdir(self.args.source_dir)
         if self.args.gitignore:
             with open(".gitignore", "w") as file:
-                file.write("/{0}\n/{1}".format(self.args.output_dir, self.args.object_dir))
+                file.write("/{0}\n/{1}".format
+                           (self.args.output_dir,
+                            self.args.object_dir))
         with open("makefile", 'w') as fp:
             fp.write(self.makefile)
         os.chdir(self.args.source_dir)
@@ -53,20 +57,39 @@ class Dtep:
         if self.args.std != "none":
             flags_list.append("-std=" + self.args.std)
         self.flags = " ".join(flags_list)
-        self.makefile = default_makefile.format(self.flags, self.args.object_dir, self.args.source_dir, 
-                                                self.args.output_dir, self.extension, self.args.name, 
-                                                self.compiler, self.version)
+        self.makefile = default_makefile.format(self.flags,
+                                                self.args.object_dir,
+                                                self.args.source_dir,
+                                                self.args.output_dir,
+                                                self.extension,
+                                                self.args.name,
+                                                self.compiler,
+                                                self.version)
 
     def set_arguments(self):
-        self.parser.add_argument("command", choices=["new", "init"], help="init to initialize in current directory, new to create a new one")
-        self.parser.add_argument("name", type=str, default="project", help="name of the project")
-        self.parser.add_argument("language", choices=["c", "c++", "cpp"], help="select the language to be used in the project")
-        self.parser.add_argument("-e", "--extension", type=str, default="none", help="set the file extension")
-        self.parser.add_argument("--std", type=str, default="none", help="the standar for example c99 or c++20")
-        self.parser.add_argument("-g", "--gitignore", action="store_true", default=False, help="adds a .gitignore file to the project")
-        self.parser.add_argument("-s", "--source-dir", type=str, default="src", help="set the name of the source directory")
-        self.parser.add_argument("--object-dir", type=str, default="obj", help="")
-        self.parser.add_argument("--output-dir", type=str, default="out", help="")
+        self.parser.add_argument("command", choices=["new", "init"],
+                                 help="init to initialize in current \
+                                 directory, new to create a new one")
+        self.parser.add_argument("name", type=str, default="project",
+                                 help="name of the project")
+        self.parser.add_argument("language", choices=["c", "c++", "cpp"],
+                                 help="select the language \
+                                 to be used in the project")
+        self.parser.add_argument("-e", "--extension", type=str,
+                                 default="none",
+                                 help="set the file extension")
+        self.parser.add_argument("--std", type=str, default="none",
+                                 help="the standar for example c99 or c++20")
+        self.parser.add_argument("-g", "--gitignore", action="store_true",
+                                 default=False,
+                                 help="adds a .gitignore file to the project")
+        self.parser.add_argument("-s", "--source-dir", type=str,
+                                 default="src",
+                                 help="set the name of the source directory")
+        self.parser.add_argument("--object-dir", type=str, default="obj",
+                                 help="")
+        self.parser.add_argument("--output-dir", type=str, default="out",
+                                 help="")
 
 
 default_makefile = """# made with dtep version {7}
@@ -120,7 +143,8 @@ int main(void) {
 \treturn 0;
 }
 """
-default_cflags = "-Wall -Wextra -Werror -Wshadow -Wconversion -Wsign-conversion -pedantic-errors"
+default_cflags = "-Wall -Wextra -Werror -Wshadow -Wconversion \
+                  -Wsign-conversion -pedantic-errors"
 default_cxxflags = default_cflags
 
 if __name__ == "__main__":
