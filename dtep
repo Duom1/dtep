@@ -2,7 +2,7 @@
 # made by duom1 on github
 import argparse, os
 
-DTEP_VERSION = 0.8
+DTEP_VERSION = 0.9
 
 class Dtep:
 
@@ -33,7 +33,6 @@ class Dtep:
         if self.args.language == "c++" or self.args.language == "cpp":
             with open("main" + self.extension, 'w') as fp:
                 fp.write(default_cpp)
-        os.mkdir("headers")
 
     def set_makefile(self):
         flags_list = []
@@ -83,13 +82,13 @@ SRCS = $(wildcard $(SRC_DIR)/*$(EXTENSION))
 OBJS = $(patsubst $(SRC_DIR)/%$(EXTENSION), $(OBJ_DIR)/%.o, $(SRCS))
 NAME = $(OUT_DIR)/{5}
 
-.PHONY: debug release
-
-debug: FLAGS += -g
-debug: $(OUT_DIR) $(OBJ_DIR) $(NAME)
+.PHONY: debug release clean
 
 release: FLAGS += -march=native -O3 -DNDEBUG
 release: $(OUT_DIR) $(OBJ_DIR) $(NAME)
+
+debug: FLAGS += -g
+debug: $(OUT_DIR) $(OBJ_DIR) $(NAME)
 
 $(NAME): $(OBJS)
 \t$({6}) -o $(NAME) $(OBJS) $(LDFLAGS)
